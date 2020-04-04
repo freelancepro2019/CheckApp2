@@ -1,0 +1,714 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:diagonal="http://schemas.android.com/apk/res-auto"
+    xmlns:squint="http://schemas.android.com/tools"
+
+    >
+
+    <data>
+
+        <variable
+            name="lang"
+            type="String" />
+
+        <variable
+            name="backListener"
+            type="com.check.apps.checkapp.interfaces.Listeners.BackListener" />
+        <variable
+            name="userModel"
+            type="com.check.apps.checkapp.models.UserModel" />
+
+    </data>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:fitsSystemWindows="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+
+            >
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:background="@drawable/profile_top"
+                />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_margin="15dp"
+                android:gravity="center_vertical"
+                android:onClick="@{()->backListener.back()}"
+                >
+                <ImageView
+                    android:id="@+id/arrow"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+
+                    android:src="@drawable/ic_left_arrow"
+                    android:tint="@color/white"
+                    android:padding="8dp"
+
+                    android:clickable="false"
+                    android:longClickable="false"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:textSize="15sp"
+                    android:textColor="@color/white"
+                    android:text="@string/back"
+                    android:clickable="false"
+                    android:longClickable="false"
+                    />
+            </LinearLayout>
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/image"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:src="@drawable/ic_user"
+                app:civ_border_color="@color/gray3"
+                app:civ_border_width="1dp"
+                app:civ_circle_background_color="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintVertical_bias=".17"
+                app:layout_constraintHorizontal_bias=".8"
+ android:visibility="gone"
+
+
+
+                />
+
+            <TextView
+                android:id="@+id/tvName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:gravity="center"
+                android:text="@{userModel.name}"
+                android:textColor="@color/white"
+                android:textSize="15sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/image"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toStartOf="@id/image"
+                app:layout_constraintWidth_default="wrap"
+                app:layout_constraintHorizontal_bias="0"
+
+
+
+
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@{userModel.email}"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="@id/tvName"
+                app:layout_constraintTop_toBottomOf="@id/tvName"
+                android:layout_marginTop="5dp"
+                app:layout_constraintEnd_toStartOf="@id/image"
+                app:layout_constraintWidth_default="wrap"
+                app:layout_constraintHorizontal_bias="0"
+
+                />
+
+            <FrameLayout
+                android:id="@+id/flName"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/image"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintVertical_bias=".2"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginStart="40dp"
+                android:layout_marginEnd="40dp"
+                >
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@color/colorPrimaryDark"
+                    android:layout_gravity="center"
+                    />
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/ic_user"
+                    android:layout_gravity="center"
+                    android:tint="@color/white"
+                    />
+            </FrameLayout>
+
+            <LinearLayout
+                android:id="@+id/llName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintStart_toEndOf="@id/flName"
+                app:layout_constraintTop_toTopOf="@id/flName"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
+                app:layout_constraintEnd_toEndOf="parent"
+
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="13sp"
+                    android:textColor="@color/gray6"
+                    android:text="@string/name"/>
+
+                <EditText
+                    android:id="@+id/edtName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    android:singleLine="true"
+                    android:text="@{userModel.name}"
+
+                    />
+
+            </LinearLayout>
+
+            <FrameLayout
+                android:id="@+id/flEmail"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/llName"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="40dp"
+                android:layout_marginEnd="40dp"
+                >
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@color/black"
+                    android:layout_gravity="center"
+                    />
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/ic_email"
+                    android:layout_gravity="center"
+                    android:tint="@color/white"
+                    />
+            </FrameLayout>
+
+            <LinearLayout
+                android:id="@+id/llEmail"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintStart_toEndOf="@id/flEmail"
+                app:layout_constraintTop_toTopOf="@id/flEmail"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
+                app:layout_constraintEnd_toEndOf="parent"
+
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="13sp"
+                    android:textColor="@color/gray6"
+                    android:text="@string/email"/>
+
+                <EditText
+                    android:id="@+id/edtEmail"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    android:singleLine="true"
+                    android:text="@{userModel.email}"
+
+                    />
+
+            </LinearLayout>
+
+
+            <FrameLayout
+                android:id="@+id/flPhone"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/llEmail"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="40dp"
+                android:layout_marginEnd="40dp"
+                >
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@color/colorPrimaryDark"
+                    android:layout_gravity="center"
+                    />
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/ic_call"
+                    android:layout_gravity="center"
+                    android:tint="@color/white"
+                    />
+            </FrameLayout>
+
+            <LinearLayout
+                android:id="@+id/llPhone"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintStart_toEndOf="@id/flPhone"
+                app:layout_constraintTop_toTopOf="@id/flPhone"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
+                app:layout_constraintEnd_toEndOf="parent"
+
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="13sp"
+                    android:textColor="@color/gray6"
+                    android:text="@string/phone"/>
+                <EditText
+                    android:id="@+id/edtPhone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text='@{userModel.phone}'
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    android:singleLine="true"
+
+                    />
+
+            </LinearLayout>
+
+
+
+            <View
+                android:id="@+id/view3"
+                android:layout_width="0dp"
+                android:layout_height="1px"
+                app:layout_constraintStart_toStartOf="@id/flPhone"
+                app:layout_constraintTop_toBottomOf="@id/llPhone"
+                app:layout_constraintEnd_toEndOf="@id/llPhone"
+                android:layout_marginTop="10dp"
+                android:background="@color/gray4"
+                android:visibility="invisible"
+                />
+
+            <FrameLayout
+                android:id="@+id/flAge"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/view3"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="40dp"
+                android:layout_marginEnd="40dp"
+                >
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@color/colorPrimaryDark"
+                    android:layout_gravity="center"
+                    />
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/ic_age"
+                    android:layout_gravity="center"
+                    android:tint="@color/white"
+                    />
+            </FrameLayout>
+
+            <LinearLayout
+                android:id="@+id/llAge"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintStart_toEndOf="@id/flAge"
+                app:layout_constraintTop_toTopOf="@id/flAge"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
+                app:layout_constraintEnd_toEndOf="parent"
+
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="13sp"
+                    android:textColor="@color/gray6"
+                    android:text="@string/Age"/>
+                <EditText
+                    android:id="@+id/edtAge"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text='@{userModel.age}'
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+
+                    />
+
+
+
+            </LinearLayout>
+
+
+
+
+            <View
+                android:id="@+id/view4"
+                android:layout_width="0dp"
+                android:layout_height="1px"
+                app:layout_constraintStart_toStartOf="@id/flAge"
+                app:layout_constraintTop_toBottomOf="@id/llAge"
+                app:layout_constraintEnd_toEndOf="@id/llAge"
+                android:layout_marginTop="10dp"
+                android:background="@color/gray4"
+                android:visibility="invisible"
+                />
+
+            <FrameLayout
+                android:id="@+id/flSex"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/view4"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="40dp"
+                android:layout_marginEnd="40dp"
+                >
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@color/colorPrimaryDark"
+                    android:layout_gravity="center"
+                    />
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/ic_sex"
+                    android:layout_gravity="center"
+                    android:tint="@color/white"
+                    />
+            </FrameLayout>
+
+            <LinearLayout
+                android:id="@+id/llSex"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintStart_toEndOf="@id/flSex"
+                app:layout_constraintTop_toTopOf="@id/flSex"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
+                app:layout_constraintEnd_toEndOf="parent"
+
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="13sp"
+                    android:textColor="@color/gray6"
+                    android:text="@string/Sex"/>
+                <EditText
+                    android:id="@+id/edtSex"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text='@{userModel.gender==1?@string/male:@string/female}'
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+
+                    />
+            </LinearLayout>
+
+            <View
+                android:id="@+id/view5"
+                android:layout_width="0dp"
+                android:layout_height="1px"
+                app:layout_constraintStart_toStartOf="@id/flSex"
+                app:layout_constraintTop_toBottomOf="@id/llSex"
+                app:layout_constraintEnd_toEndOf="@id/llSex"
+                android:layout_marginTop="10dp"
+                android:background="@color/gray4"
+                android:visibility="invisible"
+                />
+
+            <FrameLayout
+                android:id="@+id/flDOB"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/view5"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="40dp"
+                android:layout_marginEnd="40dp"
+                >
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@color/colorPrimaryDark"
+                    android:layout_gravity="center"
+                    />
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/ic_calendar"
+                    android:layout_gravity="center"
+                    android:tint="@color/white"
+                    />
+            </FrameLayout>
+
+            <LinearLayout
+                android:id="@+id/llDOB"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintStart_toEndOf="@id/flDOB"
+                app:layout_constraintTop_toTopOf="@id/flDOB"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
+                app:layout_constraintEnd_toEndOf="parent"
+
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="13sp"
+                    android:textColor="@color/gray6"
+                    android:text="@string/DOB"/>
+                <EditText
+                    android:id="@+id/edtDOB"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text='@{userModel.birth_date}'
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+
+                    />
+
+
+
+            </LinearLayout>
+
+
+
+
+
+
+
+            <View
+                android:id="@+id/view6"
+                android:layout_width="0dp"
+                android:layout_height="1px"
+                app:layout_constraintStart_toStartOf="@id/flDOB"
+                app:layout_constraintTop_toBottomOf="@id/llDOB"
+                app:layout_constraintEnd_toEndOf="@id/llDOB"
+                android:layout_marginTop="10dp"
+                android:background="@color/gray4"
+                android:visibility="invisible"
+                />
+
+            <FrameLayout
+                android:id="@+id/flBGroup"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/view6"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="40dp"
+                android:layout_marginEnd="40dp"
+                >
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@color/colorPrimaryDark"
+                    android:layout_gravity="center"
+                    />
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/ic_bgroup"
+                    android:layout_gravity="center"
+                    android:tint="@color/white"
+                    />
+            </FrameLayout>
+
+            <LinearLayout
+                android:id="@+id/llBGroup"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintStart_toEndOf="@id/flBGroup"
+                app:layout_constraintTop_toTopOf="@id/flBGroup"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
+                app:layout_constraintEnd_toEndOf="parent"
+
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="13sp"
+                    android:textColor="@color/gray6"
+                    android:text="@string/BGroup"/>
+                <EditText
+                    android:id="@+id/edtBGroup"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text='@{userModel.blood_type}'
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+
+                    />
+
+
+
+            </LinearLayout>
+
+
+
+
+            <View
+                android:id="@+id/view7"
+                android:layout_width="0dp"
+                android:layout_height="1px"
+                app:layout_constraintStart_toStartOf="@id/flBGroup"
+                app:layout_constraintTop_toBottomOf="@id/flBGroup"
+                app:layout_constraintEnd_toEndOf="@id/llBGroup"
+                android:layout_marginTop="10dp"
+                android:background="@color/gray4"
+                android:visibility="invisible"
+                />
+
+
+
+            <FrameLayout
+                android:id="@+id/flCity"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/view7"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="40dp"
+                android:layout_marginEnd="40dp"
+                >
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@color/colorPrimaryDark"
+                    android:layout_gravity="center"
+                    />
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/ic_city"
+                    android:layout_gravity="center"
+                    android:tint="@color/white"
+                    />
+            </FrameLayout>
+
+            <LinearLayout
+                android:id="@+id/llCity"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintStart_toEndOf="@id/flCity"
+                app:layout_constraintTop_toTopOf="@id/flCity"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
+                app:layout_constraintEnd_toEndOf="parent"
+
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="13sp"
+                    android:textColor="@color/gray6"
+                    android:text="@string/city"/>
+                <EditText
+                    android:id="@+id/edtCity"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text='@{userModel.city}'
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+
+                    />
+
+
+
+            </LinearLayout>
+
+
+            <View
+                android:id="@+id/view9"
+                android:layout_width="0dp"
+                android:layout_height="1px"
+                app:layout_constraintStart_toStartOf="@id/flCity"
+                app:layout_constraintTop_toBottomOf="@id/flCity"
+                app:layout_constraintEnd_toEndOf="@id/llCity"
+                android:layout_marginTop="10dp"
+                android:background="@color/gray4"
+                android:visibility="invisible"
+                />
+
+
+            <Button
+                android:id="@+id/btnUpdate"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                app:layout_constraintTop_toBottomOf="@id/view9"
+                android:layout_marginTop="40dp"
+                android:layout_marginStart="40dp"
+                android:layout_marginEnd="40dp"
+                android:background="@drawable/rounded_black"
+                android:textColor="@color/white"
+                android:textSize="15sp"
+                android:text="@string/update_profile"
+                />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+</layout>

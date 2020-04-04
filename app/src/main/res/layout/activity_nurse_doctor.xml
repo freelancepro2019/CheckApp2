@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    >
+    <data>
+
+        <variable
+            name="backListener"
+            type="com.check.apps.checkapp.interfaces.Listeners.BackListener" />
+        <variable
+            name="userModel"
+            type="com.check.apps.checkapp.models.UserModel" />
+        <variable
+            name="doctorName"
+            type="String" />
+
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".activities_fragments.activity_main.MainActivity">
+
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fitsSystemWindows="true"
+            android:fillViewport="true"
+            android:scrollbars="none"
+            android:background="@color/white"
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                >
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    >
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"
+                        android:background="@color/black"
+                        />
+
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:layout_gravity="center"
+                        >
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text='@{userModel.name}'
+                            android:layout_gravity="center"
+                            android:textColor="@color/white"                        android:textSize="30sp"
+                            />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_margin="10dp"
+                        android:gravity="center_vertical"
+                        android:onClick="@{()->backListener.back()}"
+                        >
+                        <ImageView
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:src="@drawable/ic_left_arrow"
+                            android:tint="@color/white"
+                            android:padding="3dp"
+                            android:clickable="false"
+                            android:longClickable="false"
+                            />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/white"
+                            android:textSize="17sp"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginEnd="8dp"
+                            android:text="@string/back"
+                            android:clickable="false"
+                            android:longClickable="false"
+
+                            />
+
+                    </LinearLayout>
+
+
+                </FrameLayout>
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    >
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/card"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:cardCornerRadius="5dp"
+                        app:cardElevation="3dp"
+                        app:cardBackgroundColor="@color/white"
+                        app:contentPadding="8dp"
+                        android:layout_marginTop="2dp"
+                        android:layout_marginBottom="3dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:visibility="gone"
+                        >
+
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            >
+                            <ImageView
+                                android:id="@+id/icon"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                android:padding="8dp"
+                                android:src="@drawable/ic_doctor"
+                                android:tint="@color/white"
+                                android:background="@drawable/circle_color1"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                android:layout_marginBottom="10dp"
+                                android:layout_marginTop="10dp"
+                                />
+                            <TextView
+                                android:id="@+id/tvName"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintStart_toEndOf="@id/icon"
+                                android:textColor="@color/black"
+                                android:textSize="18sp"
+                                android:layout_marginStart="10dp"
+                                android:layout_marginEnd="10dp"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintWidth_default="wrap"
+                                app:layout_constraintHorizontal_bias="0"
+                                android:singleLine="true"
+                                android:text='@{"Dr."+doctorName}'
+                                app:layout_constraintBottom_toBottomOf="parent"
+
+                                />
+
+
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                    </androidx.cardview.widget.CardView>
+
+                    <TextView
+                        android:id="@+id/tvNoDoctor"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:textColor="@color/black"
+                        android:textSize="17sp"
+                        android:text="@string/no_assigned_doctor"
+                        android:visibility="gone"
+                        />
+                    <ProgressBar
+                        android:id="@+id/progBar"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:layout_gravity="center"
+                        android:visibility="gone"
+                        />
+                </FrameLayout>
+            </LinearLayout>
+        </ScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

@@ -1,0 +1,567 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    >
+
+    <data>
+
+        <variable
+            name="lang"
+            type="String" />
+        <variable
+            name="showDialogListener"
+            type="com.check.apps.checkapp.interfaces.Listeners.ShowCountryDialogListener" />
+        <variable
+            name="backListener"
+            type="com.check.apps.checkapp.interfaces.Listeners.BackListener" />
+        <variable
+            name="model"
+            type="com.check.apps.checkapp.models.SignUpModel" />
+
+        <variable
+            name="signupListener"
+            type="com.check.apps.checkapp.interfaces.Listeners.SignUpListener" />
+
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:fitsSystemWindows="true"
+        android:background="@color/white"
+        >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="30dp"
+
+
+                >
+
+                <TextView
+                    android:id="@+id/tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:textSize="30sp"
+                    android:text="@string/signup"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginTop="35dp"
+                    android:layout_gravity="center_horizontal"
+                    />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:orientation="horizontal"
+                    android:background="@drawable/small_rounded"
+                    android:layout_marginTop="20dp"
+                    >
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/ic_user"
+                        android:tint="@color/black"
+                        android:padding="8dp"
+                        />
+                    <EditText
+                        android:id="@+id/edtName"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:paddingLeft="5dp"
+                        android:paddingRight="5dp"
+                        android:hint="@string/name"
+                        android:background="@color/transparent"
+                        android:textColorHint="@color/gray6"
+                        android:singleLine="true"
+                        android:textColor="@color/black"
+                        android:textSize="14sp"
+                        android:text="@={model.name}"
+                        error="@{model.error_name}"
+
+                        />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="8dp"
+                    android:orientation="horizontal"
+                    android:background="@drawable/small_rounded"
+                    android:layout_marginTop="10dp"
+                    >
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/ic_email"
+                        android:tint="@color/black"
+                        android:padding="8dp"
+                        />
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:paddingLeft="5dp"
+                        android:paddingRight="5dp"
+                        android:hint="@string/email"
+                        android:background="@color/transparent"
+                        android:textColorHint="@color/gray6"
+                        android:singleLine="true"
+                        android:textColor="@color/black"
+                        android:textSize="14sp"
+                        android:inputType="textEmailAddress"
+                        android:text="@={model.email}"
+                        error="@{model.error_email}"
+                        />
+                </LinearLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"                        android:orientation="horizontal"
+                    android:background="@drawable/small_rounded"
+                    android:layout_marginTop="10dp"
+                    >
+                    <ImageView
+                        android:id="@+id/iconCall"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/ic_call"
+                        android:tint="@color/black"
+                        android:padding="8dp"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        />
+
+                    <ImageView
+                        android:id="@+id/imageFlag"
+                        android:layout_width="35dp"
+                        android:layout_height="25dp"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/iconCall"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginEnd="5dp"
+                        android:src="@drawable/flag_eg"
+                        android:onClick="@{()->showDialogListener.showDialog()}"
+                        />
+                    <TextView
+                        android:id="@+id/tvCode"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/imageFlag"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginEnd="5dp"
+                        android:hint="@string/code"
+                        android:textColorHint="@color/gray6"
+                        android:textSize="14sp"
+                        android:textColor="@color/black"/>
+
+                    <EditText
+                        android:id="@+id/edtPhone"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:paddingLeft="5dp"
+                        android:paddingRight="5dp"
+                        android:hint="@string/phone"
+                        android:background="@color/transparent"
+                        android:textColorHint="@color/gray6"
+                        android:singleLine="true"
+                        android:textColor="@color/black"
+                        android:textSize="14sp"
+                        android:inputType="number"
+                        tools:ignore="TextFields"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/tvCode"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginEnd="5dp"
+                        app:layout_constraintEnd_toStartOf="@id/arrow"
+                        android:text="@={model.phone}"
+                        error="@{model.error_phone}"
+                        />
+
+                    <ImageView
+                        android:id="@+id/arrow"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:rotation='@{lang.equals("ar")?180:0}'
+                        android:src="@drawable/ic_right_arrow"
+                        android:padding="5dp"
+                        android:tint="@color/black"
+                        android:onClick="@{()->showDialogListener.showDialog()}"
+
+                        />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <RadioGroup
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:orientation="horizontal"
+                    >
+                    <RadioButton
+                        android:id="@+id/rbMale"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:button="@drawable/rb_bg"
+                        android:paddingLeft="8dp"
+                        android:paddingRight="8dp"
+                        android:layout_weight="1"
+                        android:textColor="@color/black"
+                        android:textSize="15sp"
+                        android:text="@string/male"
+                        android:layout_marginStart="12dp"
+                        android:layout_marginEnd="12dp"
+                        />
+
+                    <RadioButton
+                        android:id="@+id/rbFemale"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:button="@drawable/rb_bg"
+                        android:paddingLeft="8dp"
+                        android:paddingRight="8dp"
+                        android:layout_weight="1"
+                        android:textColor="@color/black"
+                        android:textSize="15sp"
+                        android:text="@string/female"
+                        android:layout_marginStart="12dp"
+                        android:layout_marginEnd="12dp"
+                        />
+                </RadioGroup>
+
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/small_rounded"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    >
+                    <Spinner
+                        android:id="@+id/spinnerBlood"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        app:backgroundTint="@color/black"
+                        />
+                </FrameLayout>
+
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="8dp"
+                    android:orientation="horizontal"
+                    android:background="@drawable/small_rounded"
+                    android:layout_marginTop="10dp"
+                    >
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/ic_calendar"
+                        android:tint="@color/black"
+                        android:padding="10dp"
+                        />
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:paddingLeft="5dp"
+                        android:paddingRight="5dp"
+                        android:hint="@string/age"
+                        android:background="@color/transparent"
+                        android:textColorHint="@color/gray6"
+                        android:singleLine="true"
+                        android:textColor="@color/black"
+                        android:textSize="14sp"
+                        android:inputType="number"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginEnd="5dp"
+                        android:text="@={model.age}"
+                        error="@{model.error_age}"
+                        />
+                </LinearLayout>
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/consBirthDate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:background="@drawable/small_rounded"
+                    android:layout_marginTop="10dp"
+                    >
+                    <ImageView
+                        android:id="@+id/iconCalender"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/ic_calendar"
+                        android:tint="@color/black"
+                        android:padding="10dp"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:clickable="false"
+                        android:longClickable="false"
+                        android:layout_marginStart="3dp"
+                        android:layout_marginEnd="3dp"
+                        />
+                    <TextView
+                        android:id="@+id/tvBirthDate"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:paddingLeft="5dp"
+                        android:paddingRight="5dp"
+                        android:hint="@string/birth_date"
+                        android:background="@color/transparent"
+                        android:textColorHint="@color/gray6"
+                        android:singleLine="true"
+                        android:textColor="@color/black"
+                        android:textSize="14sp"
+                        android:gravity="center_vertical"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/iconCalender"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginEnd="5dp"
+                        app:layout_constraintEnd_toStartOf="@id/arrow2"
+                        android:clickable="false"
+                        android:longClickable="false"
+                        />
+
+                    <ImageView
+                        android:id="@+id/arrow2"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:src="@drawable/ic_right_arrow"
+                        android:padding="5dp"
+                        android:tint="@color/black"
+                        android:rotation='@{lang.equals("ar")?180:0}'
+                        android:clickable="false"
+                        android:longClickable="false"
+
+                        />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="8dp"
+                    android:orientation="horizontal"
+                    android:background="@drawable/small_rounded"
+                    android:layout_marginTop="10dp"
+                    >
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/ic_map"
+                        android:tint="@color/black"
+                        android:padding="10dp"
+                        />
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:paddingLeft="5dp"
+                        android:paddingRight="5dp"
+                        android:hint="@string/city"
+                        android:background="@color/transparent"
+                        android:textColorHint="@color/gray6"
+                        android:singleLine="true"
+                        android:textColor="@color/black"
+                        android:textSize="14sp"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginEnd="5dp"
+                        android:text="@={model.city}"
+                        error="@{model.error_city}"
+                        />
+                </LinearLayout>
+
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/small_rounded"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    >
+                    <Spinner
+                        android:id="@+id/spinner"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        app:backgroundTint="@color/black"
+                        />
+                </FrameLayout>
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/small_rounded"
+                    android:layout_marginTop="10dp"
+                    app:hintEnabled="false"
+                    app:errorEnabled="false"
+                    app:counterEnabled="false"
+                    app:startIconTint="@color/black"
+                    app:passwordToggleEnabled="true"
+                    app:passwordToggleTint="@color/black"
+                    app:startIconDrawable="@drawable/ic_lock"
+                    >
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:paddingLeft="5dp"
+                        android:paddingRight="5dp"
+                        android:hint="@string/password"
+                        android:background="@color/transparent"
+                        android:textColorHint="@color/gray6"
+                        android:singleLine="true"
+                        android:inputType="textPassword"
+                        android:textColor="@color/black"
+                        android:textSize="14sp"
+                        android:text="@={model.password}"
+                        error="@{model.error_password}"
+
+                        />
+
+
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/small_rounded"
+                    android:layout_marginTop="10dp"
+                    app:hintEnabled="false"
+                    app:errorEnabled="false"
+                    app:counterEnabled="false"
+                    app:startIconTint="@color/black"
+                    app:passwordToggleEnabled="true"
+                    app:passwordToggleTint="@color/black"
+                    app:startIconDrawable="@drawable/ic_lock"
+                    >
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:paddingLeft="5dp"
+                        android:paddingRight="5dp"
+                        android:hint="@string/re_password"
+                        android:background="@color/transparent"
+                        android:textColorHint="@color/gray6"
+                        android:singleLine="true"
+                        android:inputType="textPassword"
+                        android:textColor="@color/black"
+                        android:textSize="14sp"
+
+                        android:text="@={model.re_password}"
+                        error="@{model.error_re_password}"
+
+                        />
+
+
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <CheckBox
+                    android:id="@+id/checkboxFingerprint"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:button="@drawable/rb_bg"
+                    android:paddingLeft="8dp"
+                    android:paddingRight="8dp"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:text="@string/use_fingerprint"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginEnd="12dp"
+                    android:layout_marginTop="15dp"
+                    />
+
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="40dp"
+                    android:background="@drawable/rounded_corner"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:text="@string/signup"
+                    android:onClick="@{()->signupListener.checkDataSignUp()}"
+                    />
+
+                <CheckBox
+                    android:id="@+id/checkboxTerms"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:button="@drawable/rb_bg"
+                    android:paddingLeft="8dp"
+                    android:paddingRight="8dp"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:text="@string/accept_terms_and_conditions"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginEnd="12dp"
+                    android:layout_marginTop="20dp"
+                    />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="40dp"
+                    android:background="@color/transparent"
+                    android:textSize="14sp"
+                    android:textColor="@color/black"
+                    android:text="@string/you_already_have_an_account_log_in"
+                    android:onClick="@{()->backListener.back()}"
+                    />
+
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+</layout>
+

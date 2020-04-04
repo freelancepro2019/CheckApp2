@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="lang"
+            type="String" />
+
+
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/gray2"
+        >
+
+        <ScrollView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:fillViewport="true"
+            android:fitsSystemWindows="true"
+            android:scrollbars="none"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+
+            >
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                >
+
+                <FrameLayout
+                    android:id="@+id/fl"
+                    android:layout_width="0dp"
+                    android:layout_height="200dp"
+                    android:background="@color/colorPrimary"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    >
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        >
+                        <TextView
+                            android:id="@+id/code"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="20dp"
+                            android:text="@string/enter_code"
+                            android:textColor="@color/white"
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+
+                            />
+
+                        <TextView
+                            android:id="@+id/sms"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginTop="20dp"
+                            android:layout_marginRight="20dp"
+                            android:gravity="center"
+                            android:text="@string/enter_the_sms_verification_code_below_that_was_sent_to_your_mobile_phone"
+                            android:textColor="@color/white"
+                            android:textSize="17sp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/code"
+
+                            />
+                    </LinearLayout>
+                </FrameLayout>
+
+
+                <EditText
+                    android:id="@+id/edt_code"
+                    android:layout_width="130dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:hint="@string/enter_code"
+                    android:inputType="number"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/black"
+                    android:backgroundTint="@color/black"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/fl"
+                    android:layout_marginTop="25dp"
+
+                    />
+
+                <LinearLayout
+                    android:id="@+id/ll"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="40dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/edt_code"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:orientation="horizontal"
+                    android:weightSum="1"
+                    >
+                    <Button
+                        android:id="@+id/btn_resend"
+                        android:layout_width="0dp"
+                        android:layout_height="35dp"
+                        android:layout_weight=".5"
+                        android:textColor="@color/black"
+                        android:textSize="15sp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp"
+                        android:background="@drawable/rounded_gray_corner"
+                        android:text="@string/resend"
+                        />
+
+                    <Button
+                        android:id="@+id/btn_confirm"
+                        android:layout_width="0dp"
+                        android:layout_height="35dp"
+                        android:layout_weight=".5"
+                        android:textColor="@color/black"
+                        android:textSize="15sp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp"
+                        android:background="@drawable/rounded_gray_corner"
+                        android:text="@string/confirm"
+
+                        />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="40dp"
+                    android:layout_marginRight="20dp"
+                    android:gravity="center"
+                    android:text="@string/we_ll_never_share_or_sell_your_phone_number_your_privacy_is_100_guaranteed"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/ll"
+
+
+                    />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </ScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
