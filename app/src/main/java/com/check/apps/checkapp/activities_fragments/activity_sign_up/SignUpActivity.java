@@ -245,9 +245,9 @@ public class SignUpActivity extends AppCompatActivity implements Listeners.BackL
 
         });
 
-        binding.tvCode.setText("+20");
+        binding.tvCode.setText("+966");
         binding.imageFlag.setImageResource(R.drawable.flag_eg);
-        signUpModel.setPhone_code("+20");
+        signUpModel.setPhone_code("+966");
         binding.setModel(signUpModel);
 
         binding.checkboxTerms.setOnClickListener(view -> {

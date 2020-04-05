@@ -127,8 +127,7 @@ public class VerificationCodeActivity extends AppCompatActivity {
                     checkValidCode(smsCode);
                 }else
                     {
-                      createAccount();
-                    }
+                        Toast.makeText(VerificationCodeActivity.this, "Server error", Toast.LENGTH_SHORT).show();                    }
 
 
             }

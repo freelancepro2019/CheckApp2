@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
 import com.check.apps.checkapp.R;
+import com.check.apps.checkapp.activities_fragments.activity_change_password.ChangePasswordActivity;
 import com.check.apps.checkapp.activities_fragments.activity_doctor_home.HomeDoctorActivity;
 import com.check.apps.checkapp.activities_fragments.activity_fingerprint.FingerPrintActivity;
 import com.check.apps.checkapp.activities_fragments.activity_main.MainActivity;
@@ -73,6 +74,11 @@ public class LoginActivity extends AppCompatActivity implements Listeners.LoginL
             Intent intent = new Intent(this, SignUpActivity.class);
             startActivity(intent);
             finish();
+        });
+        binding.tvForgetPass.setOnClickListener(view -> {
+
+        Intent intent = new Intent(this, ChangePasswordActivity.class);
+        startActivity(intent);
         });
     }
 
