@@ -17,6 +17,7 @@ import com.check.apps.checkapp.R;
 import com.check.apps.checkapp.activities_fragments.activity_change_password.ChangePasswordActivity;
 import com.check.apps.checkapp.activities_fragments.activity_doctor_home.HomeDoctorActivity;
 import com.check.apps.checkapp.activities_fragments.activity_fingerprint.FingerPrintActivity;
+import com.check.apps.checkapp.activities_fragments.activity_forget_password.ForgetPasswordActivity;
 import com.check.apps.checkapp.activities_fragments.activity_main.MainActivity;
 import com.check.apps.checkapp.activities_fragments.activity_nurse_home.NurseHomeActivity;
 import com.check.apps.checkapp.activities_fragments.activity_patient_home.HomePatientActivity;
@@ -77,7 +78,7 @@ public class LoginActivity extends AppCompatActivity implements Listeners.LoginL
         });
         binding.tvForgetPass.setOnClickListener(view -> {
 
-        Intent intent = new Intent(this, ChangePasswordActivity.class);
+        Intent intent = new Intent(this, ForgetPasswordActivity.class);
         startActivity(intent);
         });
     }

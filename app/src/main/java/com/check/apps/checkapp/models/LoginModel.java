@@ -25,7 +25,7 @@ public class LoginModel extends BaseObservable {
 
         if (!email.trim().isEmpty() &&
                 Patterns.EMAIL_ADDRESS.matcher(email.trim()).matches() &&
-                password.trim().length() >= 6
+                password.trim().length() >= 10
 
         ) {
             error_email.set(null);
@@ -49,7 +49,7 @@ public class LoginModel extends BaseObservable {
             if (password.trim().isEmpty()) {
                 error_password.set(context.getString(R.string.field_req));
             }
-            else if (password.trim().length()<6) {
+            else if (password.trim().length()<10) {
                 error_password.set(context.getString(R.string.pass_short));
 
             } else {

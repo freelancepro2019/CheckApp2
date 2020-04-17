@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
@@ -421,6 +422,8 @@ public class SignUpActivity extends AppCompatActivity implements Listeners.BackL
         String date = dateFormat.format(new Date(calendar.getTimeInMillis()));
         binding.tvBirthDate.setText(date);
         signUpModel.setBirth_date(date);
+        signUpModel.setAge((2020-year)+"");
+        Log.e("agggge",(2020-year)+"");
         binding.setModel(signUpModel);
     }
 

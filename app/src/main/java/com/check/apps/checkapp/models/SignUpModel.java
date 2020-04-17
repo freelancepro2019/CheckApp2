@@ -75,7 +75,7 @@ public class SignUpModel extends BaseObservable implements Serializable {
                 !blood_type.trim().isEmpty()&&
                 !age.trim().isEmpty()&&
                 !city.trim().isEmpty()&&
-                password.length() >= 6 &&
+                password.length() >= 10 &&
                 isValidPassword(password) &&
                 re_password.equals(password) &&
                 isAcceptTerms
@@ -176,7 +176,7 @@ public class SignUpModel extends BaseObservable implements Serializable {
 
             if (password.trim().isEmpty()) {
                 error_password.set(context.getString(R.string.field_req));
-            } else if (password.trim().length() < 6) {
+            } else if (password.trim().length() < 10) {
                 error_password.set(context.getString(R.string.pass_short));
 
             } else if(!isValidPassword(password))

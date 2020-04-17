@@ -278,6 +278,7 @@
 
 
 
+<!--
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -311,6 +312,7 @@
                         error="@{model.error_age}"
                         />
                 </LinearLayout>
+-->
 
 
                 <androidx.constraintlayout.widget.ConstraintLayout

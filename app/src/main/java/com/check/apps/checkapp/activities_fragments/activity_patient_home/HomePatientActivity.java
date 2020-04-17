@@ -61,20 +61,20 @@ public class HomePatientActivity extends AppCompatActivity {
             Intent intent = new Intent(this, UpdateProfileActivity.class);
             startActivity(intent);
         });
-        binding.cardFeedback.setOnClickListener(view -> {
+/*        binding.cardFeedback.setOnClickListener(view -> {
             Intent intent = new Intent(this, SendFeedbackActivity.class);
             startActivity(intent);
-        });
+        });*/
 
         binding.cardAppointment.setOnClickListener(view -> {
             Intent intent = new Intent(this, ReserveAppointmentActivity.class);
             startActivity(intent);
         });
 
-        binding.cardviewReports.setOnClickListener(view -> {
+     /*   binding.cardviewReports.setOnClickListener(view -> {
             Intent intent = new Intent(this, ReportActivity.class);
             startActivity(intent);
-        });
+        });*/
 
         binding.cardMyReservation.setOnClickListener(view -> {
             Intent intent = new Intent(this, PatientReservationActivity.class);

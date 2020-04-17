@@ -193,5 +193,6 @@
     <string name="new_pas_req">New Password Required</string>
     <string name="new_pass">new password</string>
     <string name="Forget_Password">Forget Password</string>
+    <string name="pass_not_eq">Password does not match</string>
 
 </resources>
