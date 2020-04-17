@@ -24,6 +24,7 @@ import com.check.apps.checkapp.preferences.Preferences;
 import com.check.apps.checkapp.share.Common;
 import com.check.apps.checkapp.tags.Tags;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.EmailAuthProvider;
@@ -102,61 +103,31 @@ public class ForgetPasswordActivity extends AppCompatActivity {
             dialog.setCancelable(false);
             dialog.setCanceledOnTouchOutside(false);
             dialog.show();
+            String email = binding.edtEmail.getText().toString().trim();
 
-            dRef.addListenerForSingleValueEvent(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                    if (dataSnapshot.getValue() != null) {
-                        String email="";
-                        String uEmail="";
-                        for (DataSnapshot ds : dataSnapshot.getChildren()) {
-
-                            UserModel userModel = ds.getValue(UserModel.class);
-
-
-                            if (userModel != null) {
-
-                                email = binding.edtEmail.getText().toString().trim();
-
-                                uEmail = userModel.getEmail();
-                                Log.e("email", email);
-                                Log.e("uemail", uEmail);
-                                if (email.equals(uEmail)) {
-                                   /* FirebaseAuth.getInstance().sendPasswordResetEmail(email)
-                                            .addOnCompleteListener(new OnCompleteListener<Void>() {
-                                                @Override
-                                                public void onComplete(@NonNull Task<Void> task) {
-                                                    if (task.isSuccessful()) {
-                                                        Toast.makeText(ForgetPasswordActivity.this, "Check email to reset your password!", Toast.LENGTH_SHORT).show();
-                                                    } else {
-                                                        Toast.makeText(ForgetPasswordActivity.this, "Fail to send reset password email!", Toast.LENGTH_SHORT).show();
-                                                    }
-                                                }
-                                            });*/
-                                    Intent intent = new Intent(ForgetPasswordActivity.this, NewPasswordActivity.class);
-                                    intent.putExtra("email", email);
-                                    startActivity(intent);
-                                }else {
-                                    dialog.dismiss();
-                                }
-
-                            } else {
+            mAuth.sendPasswordResetEmail(email)
+                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if(task.isSuccessful()){
                                 dialog.dismiss();
-                                Toast.makeText(ForgetPasswordActivity.this, "Email not recorded in DB", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getApplicationContext(), "Reset password instructions has sent to your email",
+                                        Toast.LENGTH_SHORT).show();
+                            }else{
+                                dialog.dismiss();
+                                Toast.makeText(getApplicationContext(),
+                                        "Email don't exist", Toast.LENGTH_SHORT).show();
                             }
                         }
-
-
-
-                    } else {
-                    }
-                }
-
+                    }).addOnFailureListener(new OnFailureListener() {
                 @Override
-                public void onCancelled(@NonNull DatabaseError databaseError) {
-
+                public void onFailure(@NonNull Exception e) {
+                    dialog.dismiss();
+                    Log.e("mmmmmm",e.getMessage());
+                    Toast.makeText(getApplicationContext(), e.toString(), Toast.LENGTH_SHORT).show();
                 }
             });
+
         }
 
     }

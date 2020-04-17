@@ -327,7 +327,24 @@ public class SignUpActivity extends AppCompatActivity implements Listeners.BackL
         startActivity(intent);
         finish();
     }
+    private String getAge(int year, int month, int day){
+        Calendar dob = Calendar.getInstance();
+        Calendar today = Calendar.getInstance();
 
+        dob.set(year, month, day);
+
+        int age = today.get(Calendar.YEAR) - dob.get(Calendar.YEAR);
+
+        if (today.get(Calendar.DAY_OF_YEAR) < dob.get(Calendar.DAY_OF_YEAR)){
+            age--;
+        }
+
+        Integer ageInt = new Integer(age);
+        String ageS = ageInt.toString();
+        signUpModel.setAge(ageS);
+        binding.setModel(signUpModel);
+        return ageS;
+    }
     private void createCountriesDialog() {
 
         dialog = new AlertDialog.Builder(this)
@@ -422,8 +439,7 @@ public class SignUpActivity extends AppCompatActivity implements Listeners.BackL
         String date = dateFormat.format(new Date(calendar.getTimeInMillis()));
         binding.tvBirthDate.setText(date);
         signUpModel.setBirth_date(date);
-        signUpModel.setAge((2020-year)+"");
-        Log.e("agggge",(2020-year)+"");
+        getAge(year,monthOfYear,dayOfMonth);
         binding.setModel(signUpModel);
     }
 
